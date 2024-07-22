@@ -55,7 +55,17 @@ func main() {
 	fmt.Println("==================================== 调用合约 ====================================")
 	time.Sleep(time.Second * 2)
 
-	resp, err := client.InvokeContract(claimContractName, contractSaveMethod, "", []*common.KeyValuePair{}, -1, true)
+	para := []*common.KeyValuePair{
+		{
+			Key:   "BookName",
+			Value: []byte("book1"),
+		},
+		{
+			Key:   "Price",
+			Value: []byte("100"),
+		},
+	}
+	resp, err := client.InvokeContract(claimContractName, contractSaveMethod, "", para, -1, true)
 	if err != nil {
 		panic(err)
 	}
@@ -70,7 +80,13 @@ func main() {
 	fmt.Println("==================================== 查询合约 ====================================")
 	time.Sleep(time.Second * 2)
 
-	resp, err = client.QueryContract(claimContractName, contractQuiryMethod, []*common.KeyValuePair{}, -1)
+	para = []*common.KeyValuePair{
+		{
+			Key:   "BookName",
+			Value: []byte("book1"),
+		},
+	}
+	resp, err = client.QueryContract(claimContractName, contractQuiryMethod, para, -1)
 	if err != nil {
 		panic(err)
 	}
