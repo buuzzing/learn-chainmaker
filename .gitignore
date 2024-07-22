@@ -1,0 +1,5 @@
+config/crypto-config
+
+contracts/build/*.7z
+
+*.log*
