@@ -1,17 +1,19 @@
 package main
 
 import (
-	"encoding/json"
 	"log"
 	"strconv"
+
+	bookproto "book/protos"
 
 	"chainmaker.org/chainmaker/contract-sdk-go/v2/pb/protogo"
 	"chainmaker.org/chainmaker/contract-sdk-go/v2/sandbox"
 	"chainmaker.org/chainmaker/contract-sdk-go/v2/sdk"
+	"google.golang.org/protobuf/proto"
 )
 
 // 在链上存储书籍信息：书名和价格
-// 使用 json Marshal 和 Unmarshal 进行序列化和反序列化
+// 使用 protobuf 进行序列化和反序列化
 
 type Book struct{}
 
@@ -34,15 +36,9 @@ func (b *Book) InvokeContract(method string) protogo.Response {
 	}
 }
 
-// 存储对象
-type BookInfo struct {
-	BookName string `json:"BookName"`
-	Price    int32  `json:"Price"`
-}
-
 // 新建一个书籍对象
-func NewBookInfo(bookName string, price int32) *BookInfo {
-	return &BookInfo{
+func NewBookInfo(bookName string, price int32) *bookproto.BookInfo {
+	return &bookproto.BookInfo{
 		BookName: bookName,
 		Price:    price,
 	}
@@ -66,9 +62,9 @@ func (b *Book) Save() protogo.Response {
 	book := NewBookInfo(bookName, int32(price))
 
 	// 序列化
-	bookBytes, err := json.Marshal(book)
+	bookBytes, err := proto.Marshal(book)
 	if err != nil {
-		return sdk.Error("json marshal error")
+		return sdk.Error("proto marshal error")
 	}
 
 	// 存储
@@ -102,10 +98,10 @@ func (b *Book) Quiry() protogo.Response {
 	}
 
 	// 反序列化
-	book := &BookInfo{}
-	err = json.Unmarshal(bookBytes, book)
+	book := &bookproto.BookInfo{}
+	err = proto.Unmarshal(bookBytes, book)
 	if err != nil {
-		return sdk.Error("json unmarshal error")
+		return sdk.Error("proto unmarshal error")
 	}
 
 	// 记录日志

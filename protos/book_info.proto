@@ -1,0 +1,8 @@
+syntax = "proto3";
+package main;
+
+// 链上存储的对象数据结构
+message BookInfo {
+  string book_name = 1;
+  int32 price = 2;
+}
