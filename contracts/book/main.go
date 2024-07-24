@@ -105,10 +105,11 @@ func (b *Book) Quiry() protogo.Response {
 	}
 
 	// 记录日志
-	sdk.Instance.Debugf("[quiry] bookName: %s, price: %d", book.BookName, book.Price)
+	result := "bookName: " + book.BookName + ", price: " + strconv.Itoa(int(book.Price))
+	sdk.Instance.Debugf("[quiry] " + result)
 
 	// 返回结果
-	return sdk.Success(bookBytes)
+	return sdk.Success([]byte(result))
 
 }
 

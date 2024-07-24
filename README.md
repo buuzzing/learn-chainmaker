@@ -17,6 +17,10 @@ chainmaker v2.3.4
 make       v4.2.1
 ```
 
+### 快速环境安装
+
+如果你使用的系统是 ubuntu/debian 系（使用 apt 包管理器）或 arch/manjaro 系（使用 pacman 包管理器），可以使用或参考[此文件](https://github.com/buuzzing/TOOLS/blob/main/chainmaker_env.sh)进行环境依赖安装
+
 ## 运行
 
 首先需要注册长安链仓库的账号，参见[源码下载](https://docs.chainmaker.org.cn/v2.3.4/html/quickstart/%E9%80%9A%E8%BF%87%E5%91%BD%E4%BB%A4%E8%A1%8C%E4%BD%93%E9%AA%8C%E9%93%BE.html#id8)
@@ -40,6 +44,7 @@ make build-contract
 # 启链，执行合约
 # 此步骤将会拉取 docker 镜像 chainmakerofficial/chainmaker-vm-engine:v2.3.4
 # 请确保能够正常访问 docker hub，或是已经准备好了这个镜像
+# 此步骤可能需要 sudo 权限，或是用户位于 docker 用户组
 make run
 ```
 
@@ -49,7 +54,7 @@ make run
 # 停止链
 make stop
 
-# 清理
+# 清理，此步骤可能需要 sudo 权限
 make clean
 ```
 
@@ -76,3 +81,11 @@ protoc --proto_path=. \
   --go_opt=Mprotos/book_info.proto=protos/ \
   protos/book_info.proto
 ```
+
+## 扩展阅读
+
+长安链 sdk-go 的一个简单 demo 参见[此项目](https://git.chainmaker.org.cn/chainmaker/sdk-go-demo)
+
+长安链事件监听 demo 参见[此文件](https://git.chainmaker.org.cn/chainmaker/sdk-go/-/blob/master/examples/subscribe/main.go)
+
+长安链 sdk-go 的接口说明文档参见[此文件](https://git.chainmaker.org.cn/chainmaker/sdk-go/-/blob/v2.3.5/sdk_interface.go)
