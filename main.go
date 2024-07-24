@@ -32,10 +32,17 @@ func main() {
 		panic(err)
 	}
 
-	go subscribeEvent(client)
+	ctx, cancel := context.WithCancel(context.Background())
+	go subscribeEvent(client, ctx)
+	fmt.Println(">>>>>>事件监听协程已启动")
 
 	txId, blockHeight := deployAndInvokeContract(client)
 	quiryBlockchain(client, txId, blockHeight)
+
+	cancel()
+	// 等待 subscribeEvent 协程输出停止信息
+	time.Sleep(time.Second)
+	fmt.Println("==================================== 客户端关闭 ====================================")
 }
 
 func deployAndInvokeContract(client *sdk.ChainClient) (txId string, blockHeight uint64) {
@@ -124,10 +131,7 @@ func quiryBlockchain(client *sdk.ChainClient, txId string, blockHeight uint64) {
 	fmt.Printf("查询交易成功\n\ttxid: %s\n\tresult: %s\n\n", txId, string(tx.Transaction.Result.ContractResult.Result))
 }
 
-func subscribeEvent(client *sdk.ChainClient) {
-	ctx, cancel := context.WithCancel(context.Background())
-	defer cancel()
-
+func subscribeEvent(client *sdk.ChainClient, ctx context.Context) {
 	// 订阅实时事件
 	c, err := client.SubscribeContractEvent(ctx, -1, -1, claimContractName, contractEventName)
 	if err != nil {
@@ -153,7 +157,7 @@ func subscribeEvent(client *sdk.ChainClient) {
 			fmt.Printf(">>>>>>监听到[%s]合约[%s]事件, blockheight: %d, data: %+v\n", claimContractName, contractEventName, contractEventInfo.BlockHeight, contractEventInfo.EventData)
 
 		case <-ctx.Done():
-			fmt.Println("context done")
+			fmt.Println(">>>>>>事件监听协程已停止")
 			return
 		}
 	}

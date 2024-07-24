@@ -39,6 +39,10 @@ prepare_node:
 build-contract:
 	@cd $(CURR_DIR)/contracts/book && bash build.sh
 
+# 执行上述所有操作
+.PHONY: all
+all: clone-chainmaker build-cryptogen prepare_node build-contract
+
 # 启链，执行合约
 .PHONY: run
 run:
