@@ -21,6 +21,13 @@ make       v4.2.1
 
 如果你使用的系统是 ubuntu/debian 系（使用 apt 包管理器）或 arch/manjaro 系（使用 pacman 包管理器），可以使用或参考[此文件](https://github.com/buuzzing/TOOLS/blob/main/chainmaker_env.sh)进行环境依赖安装
 
+> **注意事项**
+>
+> + 执行该脚本需要 sudo 权限
+> + 如果使用该脚本安装 Go，它会在 `$HOME/.profile` 文件下对 PATH 添加 Go 的路径。如果你使用的不是默认 bash（例如 zsh 或 fish），需要手动在对应 shell 的配置文件中添加 Go 的 PATH
+> + 如果你已经自行安装了 GO，该脚本既不会重新安装 Go，也不会对现有的 Go 做版本检查
+> + 执行该脚本时如果出现 *docker permission failed* 的错误提示，再执行一遍这个脚本即可
+
 ## 运行
 
 首先需要注册长安链仓库的账号，参见[源码下载](https://docs.chainmaker.org.cn/v2.3.4/html/quickstart/%E9%80%9A%E8%BF%87%E5%91%BD%E4%BB%A4%E8%A1%8C%E4%BD%93%E9%AA%8C%E9%93%BE.html#id8)

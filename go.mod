@@ -1,12 +1,15 @@
-module learn_chainmaker
+module learnchainmaker
 
 go 1.19
 
 require (
+	chainmaker.org/chainmaker/pb-go/v2 v2.3.5
+	chainmaker.org/chainmaker/sdk-go/v2 v2.3.5
+)
+
+require (
 	chainmaker.org/chainmaker/common/v2 v2.3.4 // indirect
-	chainmaker.org/chainmaker/pb-go/v2 v2.3.5 // indirect
 	chainmaker.org/chainmaker/protocol/v2 v2.3.5 // indirect
-	chainmaker.org/chainmaker/sdk-go/v2 v2.3.5 // indirect
 	chainmaker.org/chainmaker/utils/v2 v2.3.5 // indirect
 	github.com/Rican7/retry v0.1.0 // indirect
 	github.com/StackExchange/wmi v0.0.0-20190523213315-cbe66965904d // indirect
@@ -16,6 +19,7 @@ require (
 	github.com/fsnotify/fsnotify v1.5.1 // indirect
 	github.com/go-ole/go-ole v1.2.4 // indirect
 	github.com/go-sql-driver/mysql v1.7.0 // indirect
+	github.com/goccy/go-json v0.10.2 // indirect
 	github.com/gogo/protobuf v1.3.2 // indirect
 	github.com/golang/protobuf v1.5.2 // indirect
 	github.com/google/uuid v1.3.0 // indirect
@@ -26,6 +30,8 @@ require (
 	github.com/jinzhu/now v1.1.5 // indirect
 	github.com/json-iterator/go v1.1.11 // indirect
 	github.com/konsorten/go-windows-terminal-sequences v1.0.3 // indirect
+	github.com/kpango/fastime v1.1.9 // indirect
+	github.com/kpango/glg v1.6.15 // indirect
 	github.com/lestrrat-go/strftime v1.0.3 // indirect
 	github.com/linvon/cuckoo-filter v0.4.0 // indirect
 	github.com/magiconair/properties v1.8.5 // indirect
@@ -44,7 +50,7 @@ require (
 	github.com/pkg/errors v0.9.1 // indirect
 	github.com/remyoudompheng/bigfft v0.0.0-20200410134404-eec4a21b6bb0 // indirect
 	github.com/shirou/gopsutil v2.19.10+incompatible // indirect
-	github.com/sirupsen/logrus v1.6.0 // indirect
+	github.com/sirupsen/logrus v1.9.0 // indirect
 	github.com/spf13/afero v1.6.0 // indirect
 	github.com/spf13/cast v1.4.1 // indirect
 	github.com/spf13/jwalterweatherman v1.1.0 // indirect
@@ -58,10 +64,10 @@ require (
 	github.com/tjfoc/gmsm v1.4.1 // indirect
 	go.uber.org/atomic v1.7.0 // indirect
 	go.uber.org/multierr v1.6.0 // indirect
-	go.uber.org/zap v1.17.0 // indirect
+	go.uber.org/zap v1.24.0 // indirect
 	golang.org/x/crypto v0.0.0-20210817164053-32db794688a5 // indirect
 	golang.org/x/net v0.0.0-20210503060351-7fd8e65b6420 // indirect
-	golang.org/x/sys v0.0.0-20220222200937-f2425489ef4c // indirect
+	golang.org/x/sys v0.0.0-20220715151400-c0bba94af5f8 // indirect
 	golang.org/x/text v0.3.6 // indirect
 	google.golang.org/genproto v0.0.0-20210828152312-66f60bf46e71 // indirect
 	google.golang.org/grpc v1.40.0 // indirect

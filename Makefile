@@ -47,7 +47,7 @@ all: clone-chainmaker build-cryptogen prepare_node build-contract
 .PHONY: run
 run:
 	@cd $(CURR_DIR)/chainmaker/chainmaker-go/scripts && bash cluster_quick_start.sh normal
-	@cd $(CURR_DIR) && go run main.go
+	@cd $(CURR_DIR) && go run main.go book
 
 # 停止链
 .PHONY: stop
